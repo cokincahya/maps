@@ -63,7 +63,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/peta">Peta</a>
+            <a class="nav-link" href="/">Peta</a>
           </li>
 
       </button>

@@ -34,8 +34,8 @@ Route::get('/cari','DataController@cari');
 
 Route::get('/create-pallete','IndexController@createPallette');
 Route::resource('/data','DataController');
-Route::resource('/','IndexController');
-Route::get('/peta','IndexController@peta');
+// Route::resource('/','IndexController');
+Route::get('/','IndexController@peta');
 Route::get('/getData','IndexController@getData');
 Route::get('/getPositif','IndexController@getPositif');
 Route::post('/search','IndexController@search');
