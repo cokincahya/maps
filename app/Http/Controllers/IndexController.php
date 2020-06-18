@@ -43,18 +43,14 @@ class IndexController extends Controller
         
         $tanggal = $request->tanggal;
         $tanggalSekarang = Carbon::parse($request->tanggal)->format('d F Y');
-        // $cekData = Data::select('kabupaten','id_kabupaten','meninggal','positif','rawat','sembuh','tanggal')
-        //     ->rightjoin('tb_kabupaten','tb_data.id_kabupaten','=','tb_kabupaten.id')
-        //     ->where('tanggal',$request->tanggal)
-        //     ->orderBy('id_kabupaten','ASC')
-        //     ->get();
         $cekData = Data::select('tb_data.id','id_kabupaten','id_kecamatan','id_kelurahan','tanggal',
         'kabupaten','kecamatan','kelurahan','sembuh','rawat','total as positif',
         'meninggal','ppln','ppdn','tl','lainnya','level')
         ->join('tb_kelurahan','tb_data.id_kelurahan','=','tb_kelurahan.id')
         ->join('tb_kecamatan','tb_kelurahan.id_kecamatan','=','tb_kecamatan.id')
         ->join('tb_kabupaten','tb_kecamatan.id_kabupaten','=','tb_kabupaten.id')
-        ->where('tanggal', $request->tanggal)->orderBy('id_kelurahan','asc')
+        ->where('tanggal', $request->tanggal)
+        ->orderBy('id_kelurahan','asc')
         ->get();
         if (count($cekData) == 0) {
             $data = Kabupaten::select('kabupaten',
