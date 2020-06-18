@@ -72,7 +72,7 @@ class DataController extends Controller
 
 
         $date   = \Carbon\Carbon::now()->format('d F Y');
-        return view('data.create' ,compact('kecamatan','kelurahan','data','test','sembuh','total','rawat','meninggal','date'),['kabupaten' => $kabupaten,]
+        return view('data.create' ,compact('kecamatan','kelurahan','data','test','sembuh','positif','rawat','meninggal','date'),['kabupaten' => $kabupaten,]
     );
 
         //
