@@ -150,6 +150,10 @@
                         </select>
                     </div> --> 
                 <div class="form-group">
+                    <label for="exampleFormControlInput1">Level</label>
+                    <input type="number" class="form-control" name="level" placeholder="">
+                </div>
+                <div class="form-group">
                     <label for="exampleFormControlInput1">Jumlah PP-LN</label>
                     <input type="number" class="form-control" name="ppln" placeholder="">
                 </div>
