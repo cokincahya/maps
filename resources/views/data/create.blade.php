@@ -77,7 +77,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/peta">Peta</a>
+            <a class="nav-link" href="/">Peta</a>
           </li>
 
       </button>
@@ -222,11 +222,11 @@
                         <th scope="col">Kabupaten</th>
                         <th scope="col">Kecamatan</th>
                         <th scope="col">Kelurahan</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Sembuh</th>                     
-                        <th scope="col">Dirawat</th>
-                        <th scope="col">Meninggal</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" style="text-align: left">Total</th>
+                        <th scope="col" style="text-align: left">Sembuh</th>                     
+                        <th scope="col" style="text-align: left">Dirawat</th>
+                        <th scope="col" style="text-align: left">Meninggal</th>
+                        <th scope="col" style="text-align: left">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -236,10 +236,10 @@
                         <td>{{ $item->kabupaten }}</td>
                         <td>{{ $item->kecamatan }}</td>
                         <td>{{ $item->kelurahan }}</td>
-                        <td>{{ $item->total }}</td>
-                        <td>{{ $item->sembuh }}</td>
-                        <td>{{ $item->rawat }}</td>
-                        <td>{{ $item->meninggal }}</td>
+                        <td style="text-align: left" >{{ $item->total }}</td>
+                        <td style="text-align: left">{{ $item->sembuh }}</td>
+                        <td style="text-align: left">{{ $item->rawat }}</td>
+                        <td style="text-align: left">{{ $item->meninggal }}</td>
                         <td>
                           <form action="/data/{{$item->id_kelurahan}}" method="GET">
                             <button class="btn-btn-info" type="submit">
