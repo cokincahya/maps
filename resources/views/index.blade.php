@@ -243,11 +243,11 @@
                         <td>{{ $item->ppln }}</td>
                         <td>{{ $item->ppdn }}</td>
                         <td>{{ $item->lainnya }}</td>
-                        <td>{{ $item->total }}</td>                        
+                        <td>{{ $item->positif }}</td>                        
                         <td>{{ $item->rawat }}</td>
                         <td>{{ $item->sembuh }}</td>
                         <td>{{ $item->meninggal }}</td>
-                        <td>{{ $item->total }}</td>
+                        <td>{{ $item->positif }}</td>
                         </tr>
                         @endforeach
          </tbody>
