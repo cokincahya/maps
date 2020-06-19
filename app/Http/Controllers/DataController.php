@@ -107,6 +107,7 @@ class DataController extends Controller
     $kelurahan = $request->kelurahan;
     $kabupaten = $request->kabupaten;
     $tanggal = $request->tanggal;
+    $level= $request->level;
     $ppln= $request->ppln;
     $ppdn= $request->ppdn;
     $tl= $request->tl;
@@ -133,6 +134,7 @@ class DataController extends Controller
         $data = new Data;
         $data->tanggal= $request->tanggal;
         $data->id_kelurahan= $request->kelurahan;
+        $data->level= $request->level;
         $data->ppln= $request->ppln;
         $data->ppdn= $request->ppdn;
         $data->tl= $request->tl;
@@ -156,7 +158,7 @@ class DataController extends Controller
      */
     public function show($data)
     {
-        $data = Data::select('tb_data.id','kabupaten','kecamatan','kelurahan','sembuh','rawat','total','meninggal','tanggal')
+        $data = Data::select('tb_data.id','level','ppln','ppdn','tl','lainnya','kabupaten','kecamatan','kelurahan','sembuh','rawat','total','meninggal','tanggal')
                 ->join('tb_kelurahan','tb_data.id_kelurahan','=','tb_kelurahan.id')
                 ->join('tb_kecamatan','tb_kelurahan.id_kecamatan','=','tb_kecamatan.id')
                 ->join('tb_kabupaten','tb_kecamatan.id_kabupaten','=','tb_kabupaten.id')
@@ -221,7 +223,7 @@ class DataController extends Controller
     public function destroy(Data $data)
     {
         $data->delete(); 
-                $data = Data::select('tb_data.id','kelurahan','sembuh','rawat','total','meninggal','tanggal')
+                $data = Data::select('tb_data.id','level','ppln','ppdn','tl','lainnya','kelurahan','sembuh','rawat','total','meninggal','tanggal')
                 ->join('tb_kelurahan','tb_data.id_kelurahan','=','tb_kelurahan.id')
                 ->where('tb_data.id_kelurahan','=',$data)
                 ->get();
@@ -236,11 +238,27 @@ class DataController extends Controller
     }
 
 
-        public function getKecamatan(Request $request){
-        return Kecamatan::where('id_kabupaten',$request->id_kabupaten)->get();
+    public function getKecamatan(Request $request)
+    {
+        $kecamatan = Kecamatan::where('id_kabupaten', $request->get('id_kabupaten'))
+        ->pluck('nama_kecamatan','id');
+
+        return response()->json($kecamatan);
     }
 
-    public function getKelurahan(Request $request){
-        return Kelurahan::where('id_kecamatan',$request->id_kecamatan)->get();
-     }
+    public function getKelurahan(Request $request)
+    {
+        $kelurahan = Kelurahan::where('id_kecamatan', $request->get('id_kecamatan'))
+        ->pluck('nama_kelurahan','id');
+
+        return response()->json($kelurahan);
+    }
+
+    // public function getKecamatan(Request $request){
+    //     return Kecamatan::where('id_kabupaten',$request->id_kabupaten)->get();
+    // }
+
+    // public function getKelurahan(Request $request){
+    //     return Kelurahan::where('id_kecamatan',$request->id_kecamatan)->get();
+    //  }
 }
