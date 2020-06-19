@@ -43,10 +43,7 @@ class IndexController extends Controller
         
         $tanggal = $request->tanggal;
         $tanggalSekarang = Carbon::parse($request->tanggal)->format('d F Y');
-<<<<<<< HEAD
 
-=======
->>>>>>> 24f01e099cde3eb8e5f5342e3b22598a650dc785
         $cekData = Data::select('tb_data.id','id_kabupaten','id_kecamatan','id_kelurahan','tanggal',
         'kabupaten','kecamatan','kelurahan','sembuh','rawat','total',
         'meninggal','ppln','ppdn','tl','lainnya','level')
