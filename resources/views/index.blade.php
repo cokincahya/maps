@@ -209,7 +209,7 @@
       <div class="table-responsive">
           <table id="example" class="table table-hover text-nowrap" >
                   
-                    <thead>
+                    <thead style="text-align: center">
                         <tr>
                           <th rowspan=2 style="text-align: center">No</th>
                           <th rowspan=2>Kabupaten</th>
@@ -231,7 +231,7 @@
                           <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: center">
                         @foreach ($data as $item)
                         <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
