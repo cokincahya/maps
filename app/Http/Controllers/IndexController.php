@@ -31,7 +31,7 @@ class IndexController extends Controller
                 ->where('tanggal', $dateNow)->orderBy('id_kelurahan','asc')
                 ->get();
         $meninggal = Data::select(DB::raw('COALESCE(SUM(meninggal),0) as meninggal'))->where('tanggal',$dateNow)->get();
-        $positif = Data::select(DB::raw('COALESCE(SUM(total),0) as positif'))->where('tanggal',$dateNow)->get();
+        $positif = Data::select(DB::raw('COALESCE(SUM(total),0) as total'))->where('tanggal',$dateNow)->get();
         $rawat = Data::select(DB::raw('COALESCE(SUM(rawat),0) as rawat'))->where('tanggal',$dateNow)->get();
         $sembuh = Data::select(DB::raw('COALESCE(SUM(sembuh),0) as sembuh'))->where('tanggal',$dateNow)->get();
         $kabupaten = Kabupaten::all();
