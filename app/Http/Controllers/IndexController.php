@@ -43,8 +43,12 @@ class IndexController extends Controller
         
         $tanggal = $request->tanggal;
         $tanggalSekarang = Carbon::parse($request->tanggal)->format('d F Y');
+<<<<<<< HEAD
+
+=======
+>>>>>>> 24f01e099cde3eb8e5f5342e3b22598a650dc785
         $cekData = Data::select('tb_data.id','id_kabupaten','id_kecamatan','id_kelurahan','tanggal',
-        'kabupaten','kecamatan','kelurahan','sembuh','rawat','total as positif',
+        'kabupaten','kecamatan','kelurahan','sembuh','rawat','total',
         'meninggal','ppln','ppdn','tl','lainnya','level')
         ->join('tb_kelurahan','tb_data.id_kelurahan','=','tb_kelurahan.id')
         ->join('tb_kecamatan','tb_kelurahan.id_kecamatan','=','tb_kecamatan.id')
@@ -55,7 +59,7 @@ class IndexController extends Controller
         if (count($cekData) == 0) {
             $data = Kabupaten::select('kabupaten',
                 DB::raw('IFNULL("0",0) as meninggal'), 
-                DB::raw('IFNULL("0",0) as positif'), 
+                DB::raw('IFNULL("0",0) as total'), 
                 DB::raw('IFNULL("0",0) as rawat'),
                 DB::raw('IFNULL("0",0) as sembuh'),
                 DB::raw('IFNULL("0",0) as level'),
@@ -68,7 +72,7 @@ class IndexController extends Controller
             $data = $cekData;
         }
         $meninggal = Data::select(DB::raw('COALESCE(SUM(meninggal),0) as meninggal'))->where('tanggal',$request->tanggal)->get();
-        $positif = Data::select(DB::raw('COALESCE(SUM(total),0) as positif'))->where('tanggal',$request->tanggal)->get();
+        $positif = Data::select(DB::raw('COALESCE(SUM(total),0) as total'))->where('tanggal',$request->tanggal)->get();
         $rawat = Data::select(DB::raw('COALESCE(SUM(rawat),0) as rawat'))->where('tanggal',$request->tanggal)->get();
         $sembuh = Data::select(DB::raw('COALESCE(SUM(sembuh),0) as sembuh'))->where('tanggal',$request->tanggal)->get();
 
