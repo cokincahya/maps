@@ -127,7 +127,7 @@
             </div>
             <div class="card-body">
               <p class="text-right  text-white">Jumlah</p>
-              <h1 class="card-title  text-white">{{$positif[0]->positif}} <small>Org</small></h1>
+              <h1 class="card-title  text-white">{{$positif[0]->total}} <small>Org</small></h1>
             </div>
           </div>
           <br>
